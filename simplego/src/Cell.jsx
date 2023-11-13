@@ -1,8 +1,8 @@
 
 export default function Cell() {
     return (
-        <div>
-            
+        <div className="cell">
+            <div className="cell-icon"></div>
         </div>
     )
 }

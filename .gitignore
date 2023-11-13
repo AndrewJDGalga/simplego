@@ -3,8 +3,12 @@
 
 !simplego/
 !src/
+!css_dev/
+!css_prod/
 !.gitignore
 !.LICENSE
 !.README.md
 !*.jsx
 !*.html
+!*.css
+!*.scss
