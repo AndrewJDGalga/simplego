@@ -17,8 +17,8 @@ function VisualBoxGrid() {
 export default function App() {
   return (
     <main className='gospace'>
-      <GridBox />
       <Cell />
+      <GridBox />
     </main>
   )
 }
