@@ -1,6 +1,10 @@
 *
 **/*
 
+!simplego/
+!src/
 !.gitignore
 !.LICENSE
 !.README.md
+!*.jsx
+!*.html
