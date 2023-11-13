@@ -13,18 +13,13 @@
   left: calc(var(--cell-size) / 2);
   top: calc(var(--cell-size) / 2);
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(var(--board-size), 1fr);
+  grid-template-rows: repeat(var(--board-size), 1fr);
 }
-
-.gridbox {
+.gridbox-container .gridbox {
   width: var(--cell-size);
   height: var(--cell-size);
   border: 2px solid black;
-  /*
-  position: absolute;
-  left: calc(var(--cell-size) /2);
-  top: calc(var(--cell-size) /2);*/
 }
 
 .cell {
@@ -44,6 +39,7 @@
 
 :root {
   --cell-size: 64px;
+  --board-size: 8;
 }
 
 body {

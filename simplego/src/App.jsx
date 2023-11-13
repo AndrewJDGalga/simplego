@@ -18,6 +18,9 @@ function genVisualBoxGrid(size) {
 function VisualBoxGrid({boardSize}) {
   //conversion for easier values: 9x9 board actualy 8x8 squares, 13x13 = 12, etc
   const converted = boardSize - 1;
+  //set grid to match size
+  document.documentElement.style.setProperty('--board-size', `${converted}`);
+  
   const visualArray = genVisualBoxGrid(converted * converted);
   return (
     <div className='gridbox-container'>
