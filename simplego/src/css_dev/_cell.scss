@@ -1,7 +1,14 @@
 .cell {
+    width: 64px;
+    height: 64px;
     .cell-icon {
-        width: 50%;
-        height: 50%;
+        position: relative;
+        width: 25%;
+        height: 25%;    
         background-color: black;
+        border-radius: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
