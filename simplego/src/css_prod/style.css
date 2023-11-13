@@ -12,9 +12,10 @@
   width: var(--cell-size);
   height: var(--cell-size);
   border: 2px solid black;
+  /*
   position: absolute;
-  left: calc(var(--cell-size) / 2);
-  top: calc(var(--cell-size) / 2);
+  left: calc(var(--cell-size) /2);
+  top: calc(var(--cell-size) /2);*/
 }
 
 .cell {

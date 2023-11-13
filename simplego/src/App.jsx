@@ -7,10 +7,22 @@ function GridBox() {
   )
 }
 
-function VisualBoxGrid() {
+function genVisualBoxGrid(size) {
+  const tempArr = [];
+  for(let i = 0; i < size; i++) {
+    tempArr.push(<GridBox key={i} />);
+  }
+  return tempArr;
+}
 
+function VisualBoxGrid({boardSize}) {
+  //conversion for easier values: 9x9 board actualy 8x8 squares, 13x13 = 12, etc
+  const converted = boardSize - 1;
+  const visualArray = genVisualBoxGrid(converted * converted);
   return (
-    <div></div>
+    <div className='gridbox-container'>
+      {visualArray}
+    </div>
   )
 }
 
@@ -18,7 +30,7 @@ export default function App() {
   return (
     <main className='gospace'>
       <Cell />
-      <GridBox />
+      <VisualBoxGrid boardSize={9} />
     </main>
   )
 }
