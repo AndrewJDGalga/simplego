@@ -8,6 +8,15 @@
   min-height: 100vh;
 }
 
+.gridbox-container {
+  position: absolute;
+  left: calc(var(--cell-size) / 2);
+  top: calc(var(--cell-size) / 2);
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}
+
 .gridbox {
   width: var(--cell-size);
   height: var(--cell-size);
