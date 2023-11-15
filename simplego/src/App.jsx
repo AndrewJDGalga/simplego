@@ -29,11 +29,27 @@ function VisualBoxGrid({boardSize}) {
   )
 }
 
+function CellGrid({boardSize}) {
+  const cellArray = [];
+
+  for(let i = 0; i < boardSize; i++) {
+    cellArray.push(<Cell key={i} />);
+  }
+
+  return (
+    <div className='cellgrid'>
+      {(cellArray.length > 0 && cellArray)}
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <main className='gospace'>
-      <Cell />
-      <VisualBoxGrid boardSize={9} />
+      <div className='gospace-boardhost'>
+        <CellGrid boardSize={9} />
+        <VisualBoxGrid boardSize={9} />
+      </div>
     </main>
   )
 }
