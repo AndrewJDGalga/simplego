@@ -19,8 +19,8 @@
     left: calc(var(--cell-size) /2);
     top: calc(var(--cell-size) /2);
     display: grid;
-    grid-template-columns: repeat(var(--board-size), var(--cell-size));
-    grid-template-rows: repeat(var(--board-size), var(--cell-size));
+    grid-template-columns: repeat(var(--board-size-sqrs), var(--cell-size));
+    grid-template-rows: repeat(var(--board-size-sqrs), var(--cell-size));
 
     .gridbox {
         width: calc(var(--cell-size) - 2);

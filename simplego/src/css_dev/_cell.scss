@@ -15,8 +15,8 @@
 
 /*currently need to add back 1 to size since removing it for visual grid, might be better to have 2 numbers*/
 .cellgrid {
-    width: calc(var(--cell-size) * (var(--board-size) + 1));
+    width: calc(var(--cell-size) * var(--board-size-dots));
     display: grid;
-    grid-template-columns: repeat(calc(var(--board-size) + 1), var(--cell-size));
-    grid-template-rows: repeat(calc(var(--board-size) + 1), var(--cell-size));
+    grid-template-columns: repeat(var(--board-size-dots), var(--cell-size));
+    grid-template-rows: repeat(var(--board-size-dots), var(--cell-size));
 }
