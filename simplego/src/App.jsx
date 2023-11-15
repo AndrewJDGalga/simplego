@@ -31,8 +31,9 @@ function VisualBoxGrid({boardSize}) {
 
 function CellGrid({boardSize}) {
   const cellArray = [];
+  const size = boardSize * boardSize;
 
-  for(let i = 0; i < boardSize; i++) {
+  for(let i = 0; i < size; i++) {
     cellArray.push(<Cell key={i} />);
   }
 

@@ -12,3 +12,11 @@
         transform: translate(-50%, -50%);
     }
 }
+
+.cellgrid {
+    width: calc(var(--cell-size) * (var(--board-size) + 1));
+    display: grid;
+    grid-template-columns: repeat(9, var(--cell-size));
+    grid-template-rows: repeat(9, var(--cell-size));
+
+}
