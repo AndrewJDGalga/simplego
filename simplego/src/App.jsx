@@ -7,10 +7,11 @@ function GridBox() {
   )
 }
 
-function genVisualBoxGrid(size) {
+/*generate a grid using a set size and React component*/
+function genGrid(size, ReactObj) {
   const tempArr = [];
   for(let i = 0; i < size; i++) {
-    tempArr.push(<GridBox key={i} />);
+    tempArr.push(<ReactObj key={i} />);
   }
   return tempArr;
 }
@@ -21,7 +22,8 @@ function VisualBoxGrid({boardSize}) {
   //set grid to match size
   document.documentElement.style.setProperty('--board-size', `${converted}`);
   
-  const visualArray = genVisualBoxGrid(converted * converted);
+  //const visualArray = genVisualBoxGrid(converted * converted);
+  const visualArray = genGrid(converted * converted, GridBox);
   return (
     <div className='gridbox-container'>
       {visualArray}
@@ -30,12 +32,14 @@ function VisualBoxGrid({boardSize}) {
 }
 
 function CellGrid({boardSize}) {
-  const cellArray = [];
+  const cellArray = genGrid(boardSize * boardSize, Cell);  //[];
+
+  /*
   const size = boardSize * boardSize;
 
   for(let i = 0; i < size; i++) {
     cellArray.push(<Cell key={i} />);
-  }
+  }*/
 
   return (
     <div className='cellgrid'>
