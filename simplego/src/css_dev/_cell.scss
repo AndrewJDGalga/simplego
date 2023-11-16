@@ -1,6 +1,7 @@
 .cell {
     width: var(--cell-size);
     height: var(--cell-size);
+
     .cell-icon {
         position: relative;
         width: 25%;
@@ -10,6 +11,13 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
+        border-color: transparent;
+        display: block;
+
+        .black-stone, .white-strone {
+            display: none;
+        }
     }
 }
 

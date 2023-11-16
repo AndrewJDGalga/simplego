@@ -17,8 +17,8 @@
 
 .gridbox-container {
   position: absolute;
-  left: 50%; /*calc(var(--cell-size) /2);*/
-  top: calc(var(--cell-size) / 2); /*calc(var(--cell-size) /2);*/
+  left: 50%;
+  top: calc(var(--cell-size) / 2);
   display: grid;
   grid-template-columns: repeat(var(--board-size-sqrs), var(--cell-size));
   grid-template-rows: repeat(var(--board-size-sqrs), var(--cell-size));
@@ -43,6 +43,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-color: transparent;
+  display: block;
+}
+.cell .cell-icon .black-stone, .cell .cell-icon .white-strone {
+  display: none;
 }
 
 /*currently need to add back 1 to size since removing it for visual grid, might be better to have 2 numbers*/
