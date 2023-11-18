@@ -1,4 +1,4 @@
-import Cell from './Cell';
+import Cell from './components/Cell';
 import './css_prod/style.css';
 
 function GridBox() {

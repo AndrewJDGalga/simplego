@@ -5,6 +5,7 @@
 !src/
 !css_dev/
 !css_prod/
+!components/
 !.gitignore
 !.LICENSE
 !.README.md
