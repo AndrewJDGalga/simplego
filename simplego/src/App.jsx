@@ -12,8 +12,8 @@ export default function App() {
 
   return (
     <main className='gospace'>
-      <p>Current Player {curPlayer}</p>
       <GameBoard />
+      <p>Current Player {curPlayer}</p>
       <button id='end-turn' onClick={switchPlayer}>End Turn</button>
     </main>
   )

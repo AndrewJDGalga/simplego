@@ -1,0 +1,23 @@
+.gospace-boardhost {
+    width: fit-content;
+    height: fit-content;
+    background-color: bisque;
+    margin: 0 auto;
+}
+
+.gridbox-container {
+    position: absolute;
+    left: 50%;
+    top: calc(var(--cell-size) /2);
+    display: grid;
+    grid-template-columns: repeat(var(--board-size-sqrs), var(--cell-size));
+    grid-template-rows: repeat(var(--board-size-sqrs), var(--cell-size));
+
+    transform: translateX(-50%);
+
+    .gridbox {
+        width: calc(var(--cell-size) - 2);
+        height: calc(var(--cell-size) - 2);
+        border: 2px solid black;
+    }
+}
