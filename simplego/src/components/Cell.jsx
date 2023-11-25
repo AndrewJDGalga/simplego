@@ -1,12 +1,12 @@
+import { useState } from "react"
+import Stone from "./Stone";
 
 export default function Cell() {
+    const [hasStone, setHasStone] = useState(false);
 
     return (
-        <div className="cell">
-            <button className="cell-icon">
-                <span className="black-stone"></span>
-                <span className="white-stone"></span>
-            </button>
-        </div>
+        <button className="cell">
+            <span className="cell-icon"></span>
+        </button>
     )
 }

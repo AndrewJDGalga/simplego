@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Cell from "./Cell";
 
 function GridBox() {
@@ -28,8 +29,10 @@ function GridBox() {
     )
   }
   
-  function CellGrid({boardSize}) {
-    const cellArray = genGrid(boardSize * boardSize, Cell);
+  /*
+  function CellGrid({boardSize, cellArray, cellArraySetter}) {
+    //const cellArray = genGrid(boardSize * boardSize, Cell);
+    cellArraySetter(genGrid(boardSize * boardSize, Cell));
     //set dot grid to match size
     document.documentElement.style.setProperty('--board-size-dots', `${boardSize}`);
     return (
@@ -38,12 +41,24 @@ function GridBox() {
       </div>
     )
   }
+  <CellGrid boardSize={9} cellArray={cellArray} cellArraySetter={setCellArray} />
+  */
+
+
 
 export default function GameBoard() {
-    return (
-        <div className='gospace-boardhost'>
-            <CellGrid boardSize={9} />
-            <VisualBoxGrid boardSize={9} />
-      </div>
-    )
+  function changeCell(id) {
+
+  }
+
+  const [cellArray, setCellArray] = useState(genGrid(9 * 9, Cell));
+
+  return (
+      <div className='gospace-boardhost'>
+          <div className="cellgrid">
+            {cellArray}
+          </div>
+          <VisualBoxGrid boardSize={9} />
+    </div>
+  )
 }
