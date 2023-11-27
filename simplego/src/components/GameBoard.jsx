@@ -52,6 +52,17 @@ export default function GameBoard({currentPlayer}) {
   }
 
   const [cellArray, setCellArray] = useState(genGrid(9 * 9, Cell));
+  const [boardState, setBoardState] = useState([
+    ['.', '.', '.', '.', '.', '.','.', '.', '.'],
+    ['.', '.', '.', '.', '.', '.','.', '.', '.'],
+    ['.', '.', 'w', 'w', 'w', 'w','.', '.', '.'],
+    ['.', '.', 'w', 'b', 'b', 'w','.', '.', '.'],
+    ['.', '.', 'w', 'w', 'b', 'w','.', '.', '.'],
+    ['.', '.', 'w', 'b', 'b', 'w','.', '.', '.'],
+    ['.', '.', 'w', 'w', 'w', 'w','.', '.', '.'],
+    ['.', '.', '.', '.', '.', '.','.', '.', '.'],
+    ['.', '.', '.', '.', '.', '.','.', '.', '.']
+  ]);
 
   return (
       <div className='gospace-boardhost'>
