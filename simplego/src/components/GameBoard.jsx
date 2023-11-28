@@ -45,6 +45,15 @@ function CellGrid({boardSize, cellArray, cellArraySetter}) {
 */
 
 
+function popBoard(srcArr, ReactObj) {
+  const tempArr = [];
+  for(let i = 0; i < size; i++) {
+
+    tempArr.push(<ReactObj key={i} />);
+  }
+  return tempArr;
+}
+
 
 export default function GameBoard({currentPlayer}) {
   function changeCell(id) {
@@ -67,7 +76,8 @@ export default function GameBoard({currentPlayer}) {
   return (
       <div className='gospace-boardhost'>
           <div className="cellgrid">
-            {cellArray}
+            {/*{cellArray} */}
+
           </div>
           <VisualBoxGrid boardSize={9} />
     </div>
