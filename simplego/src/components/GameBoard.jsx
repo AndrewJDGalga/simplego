@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Cell from "./Cell";
 
+import CellTest from "./CellTest";
+
+
+
 function GridBox() {
   return (
     <div className='gridbox'></div>
@@ -45,11 +49,12 @@ function CellGrid({boardSize, cellArray, cellArraySetter}) {
 */
 
 
-function popBoard(srcArr, ReactObj) {
+function popBoard(srcArr) {
   const tempArr = [];
-  for(let i = 0; i < size; i++) {
-
-    tempArr.push(<ReactObj key={i} />);
+  for(let y = 0; y < srcArr.length; y++) {
+    for(let x = 0; x < srcArr[y].length; x++) {
+      tempArr.push(<CellTest key={y} icon={srcArr[y][x]} />);
+    }
   }
   return tempArr;
 }
@@ -72,6 +77,8 @@ export default function GameBoard({currentPlayer}) {
     ['.', '.', '.', '.', '.', '.','.', '.', '.'],
     ['.', '.', '.', '.', '.', '.','.', '.', '.']
   ]);
+
+  console.log(popBoard(boardState));
 
   return (
       <div className='gospace-boardhost'>
