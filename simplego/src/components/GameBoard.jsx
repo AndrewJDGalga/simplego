@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import Cell from "./Cell";
 
 import CellTest from "./CellTest";
@@ -49,11 +49,11 @@ function CellGrid({boardSize, cellArray, cellArraySetter}) {
 */
 
 
-function popBoard(srcArr) {
+function popBoard(srcArr, idSrc) {
   const tempArr = [];
   for(let y = 0; y < srcArr.length; y++) {
     for(let x = 0; x < srcArr[y].length; x++) {
-      tempArr.push(<CellTest key={y} icon={srcArr[y][x]} />);
+      tempArr.push(<CellTest key={x.toString() + y.toString()} icon={srcArr[y][x]} />);
     }
   }
   return tempArr;
@@ -64,7 +64,7 @@ export default function GameBoard({currentPlayer}) {
   function changeCell(id) {
 
   }
-
+  const stoneId = useId();
   const [cellArray, setCellArray] = useState(genGrid(9 * 9, Cell));
   const [boardState, setBoardState] = useState([
     ['.', '.', '.', '.', '.', '.','.', '.', '.'],
@@ -77,14 +77,15 @@ export default function GameBoard({currentPlayer}) {
     ['.', '.', '.', '.', '.', '.','.', '.', '.'],
     ['.', '.', '.', '.', '.', '.','.', '.', '.']
   ]);
+  const [stoneArray, setStoneArray] = useState(popBoard(boardState, stoneId));
 
-  console.log(popBoard(boardState));
+  console.log(popBoard(boardState, stoneId));
 
   return (
       <div className='gospace-boardhost'>
           <div className="cellgrid">
             {/*{cellArray} */}
-
+            {stoneArray}
           </div>
           <VisualBoxGrid boardSize={9} />
     </div>
