@@ -49,11 +49,12 @@ function CellGrid({boardSize, cellArray, cellArraySetter}) {
 */
 
 
-function popBoard(srcArr, idSrc) {
+function popBoard(srcArr) {
   const tempArr = [];
   for(let y = 0; y < srcArr.length; y++) {
     for(let x = 0; x < srcArr[y].length; x++) {
-      tempArr.push(<CellTest key={x.toString() + y.toString()} icon={srcArr[y][x]} />);
+      const id = useId();
+      tempArr.push(<CellTest key={id} icon={srcArr[y][x]} />);
     }
   }
   return tempArr;
@@ -64,7 +65,6 @@ export default function GameBoard({currentPlayer}) {
   function changeCell(id) {
 
   }
-  const stoneId = useId();
   const [cellArray, setCellArray] = useState(genGrid(9 * 9, Cell));
   const [boardState, setBoardState] = useState([
     ['.', '.', '.', '.', '.', '.','.', '.', '.'],
@@ -77,9 +77,9 @@ export default function GameBoard({currentPlayer}) {
     ['.', '.', '.', '.', '.', '.','.', '.', '.'],
     ['.', '.', '.', '.', '.', '.','.', '.', '.']
   ]);
-  const [stoneArray, setStoneArray] = useState(popBoard(boardState, stoneId));
+  const [stoneArray, setStoneArray] = useState(popBoard(boardState));
 
-  console.log(popBoard(boardState, stoneId));
+  //console.log(popBoard(boardState));
 
   return (
       <div className='gospace-boardhost'>
