@@ -1,8 +1,7 @@
 import { useId, useState } from "react";
 import Cell from "./Cell";
 
-import CellTest from "./CellTest";
-
+//import CellTest from "./CellTest";
 
 
 function GridBox() {
@@ -48,13 +47,24 @@ function CellGrid({boardSize, cellArray, cellArraySetter}) {
 <CellGrid boardSize={9} cellArray={cellArray} cellArraySetter={setCellArray} />
 */
 
-
+/*
 function popBoard(srcArr) {
   const tempArr = [];
   for(let y = 0; y < srcArr.length; y++) {
     for(let x = 0; x < srcArr[y].length; x++) {
       const id = useId();
       tempArr.push(<CellTest key={id} icon={srcArr[y][x]} />);
+    }
+  }
+  return tempArr;
+}*/
+
+function popBoard(srcArr) {
+  const tempArr = [];
+  for(let y = 0; y < srcArr.length; y++) {
+    for(let x = 0; x < srcArr[y].length; x++) {
+      const id = useId();
+      tempArr.push(<Cell key={id} icon={srcArr[y][x]} />);
     }
   }
   return tempArr;
@@ -65,7 +75,7 @@ export default function GameBoard({currentPlayer}) {
   function changeCell(id) {
 
   }
-  const [cellArray, setCellArray] = useState(genGrid(9 * 9, Cell));
+  //const [cellArray, setCellArray] = useState(genGrid(9 * 9, Cell));
   const [boardState, setBoardState] = useState([
     ['.', '.', '.', '.', '.', '.','.', '.', '.'],
     ['.', '.', '.', '.', '.', '.','.', '.', '.'],
@@ -77,7 +87,8 @@ export default function GameBoard({currentPlayer}) {
     ['.', '.', '.', '.', '.', '.','.', '.', '.'],
     ['.', '.', '.', '.', '.', '.','.', '.', '.']
   ]);
-  const [stoneArray, setStoneArray] = useState(popBoard(boardState));
+  //const [stoneArray, setStoneArray] = useState(popBoard(boardState));
+  const [stones, setStones] = useState(popBoard(boardState));
 
   //console.log(popBoard(boardState));
 
@@ -85,7 +96,8 @@ export default function GameBoard({currentPlayer}) {
       <div className='gospace-boardhost'>
           <div className="cellgrid">
             {/*{cellArray} */}
-            {stoneArray}
+            {/*stoneArray*/}
+            {stones}
           </div>
           <VisualBoxGrid boardSize={9} />
     </div>
