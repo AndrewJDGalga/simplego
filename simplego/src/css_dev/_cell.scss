@@ -6,24 +6,29 @@
     border-color: transparent;
     padding: 0;
     
-    .empty-stone {
-        width: 25%;
-        height: 25%;    
-        background-color: black;
+    .stone {
         border-radius: 100%;
         display: block;
         margin: 0 auto;
     }
 
+    .empty-stone {
+        width: 25%;
+        height: 25%;    
+        background-color: black; 
+    }
+
     .black-stone {
-        
+        width: 80%;
+        height: 80%;
+        background-color: black;
+    }
+
+    .white-stone {
+        width: 80%;
+        height: 80%;
+        background-color: white;
     }
 }
 
-/*currently need to add back 1 to size since removing it for visual grid, might be better to have 2 numbers*/
-.cellgrid {
-    width: calc(var(--cell-size) * var(--board-size-dots));
-    display: grid;
-    grid-template-columns: repeat(var(--board-size-dots), var(--cell-size));
-    grid-template-rows: repeat(var(--board-size-dots), var(--cell-size));
-}
+

@@ -16,7 +16,7 @@ export default function Cell({stone}) {
 
     return (
         <button className="cell">
-            <span className={`${stoneType}`}></span>
+            <span className={`stone ${stoneType}`}></span>
         </button>
     )
 }

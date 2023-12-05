@@ -21,3 +21,10 @@
         border: 2px solid black;
     }
 }
+
+.cellgrid {
+    width: calc(var(--cell-size) * var(--board-size-dots));
+    display: grid;
+    grid-template-columns: repeat(var(--board-size-dots), var(--cell-size));
+    grid-template-rows: repeat(var(--board-size-dots), var(--cell-size));
+}
