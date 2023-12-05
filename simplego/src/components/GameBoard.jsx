@@ -64,7 +64,7 @@ function popBoard(srcArr) {
   for(let y = 0; y < srcArr.length; y++) {
     for(let x = 0; x < srcArr[y].length; x++) {
       const id = useId();
-      tempArr.push(<Cell key={id} icon={srcArr[y][x]} />);
+      tempArr.push(<Cell key={id} stone={srcArr[y][x]} />);
     }
   }
   return tempArr;
@@ -88,7 +88,7 @@ export default function GameBoard({currentPlayer}) {
     ['.', '.', '.', '.', '.', '.','.', '.', '.']
   ]);
   //const [stoneArray, setStoneArray] = useState(popBoard(boardState));
-  const [stones, setStones] = useState(popBoard(boardState));
+  const [cells, setCells] = useState(popBoard(boardState));
 
   //console.log(popBoard(boardState));
 
@@ -97,7 +97,7 @@ export default function GameBoard({currentPlayer}) {
           <div className="cellgrid">
             {/*{cellArray} */}
             {/*stoneArray*/}
-            {stones}
+            {cells}
           </div>
           <VisualBoxGrid boardSize={9} />
     </div>

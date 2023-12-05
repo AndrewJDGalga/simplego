@@ -1,16 +1,22 @@
 import { useState } from "react"
-import Stone from "./Stone";
 
-function setStone() {
-    
+function setStone(stone){
+    switch(stone){
+        case 'w':
+            return 'white-stone';
+        case 'b':
+            return 'black-stone';
+        case '.':
+            return 'empty-stone';
+    }
 }
 
-export default function Cell() {
-    const [hasStone, setHasStone] = useState(false);
+export default function Cell({stone}) {
+    const [stoneType, setStoneType] = useState(setStone(stone));
 
     return (
-        <button className="cell" onClick={setStone}>
-            <span className="cell-icon"></span>
+        <button className="cell">
+            <span className={`${stoneType}`}></span>
         </button>
     )
 }

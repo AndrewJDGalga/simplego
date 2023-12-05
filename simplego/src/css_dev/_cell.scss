@@ -6,13 +6,17 @@
     border-color: transparent;
     padding: 0;
     
-    .cell-icon {
+    .empty-stone {
         width: 25%;
         height: 25%;    
         background-color: black;
         border-radius: 100%;
         display: block;
         margin: 0 auto;
+    }
+
+    .black-stone {
+        
     }
 }
 

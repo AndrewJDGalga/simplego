@@ -15,7 +15,7 @@
   border-color: transparent;
   padding: 0;
 }
-.cell .cell-icon {
+.cell .empty-stone {
   width: 25%;
   height: 25%;
   background-color: black;
@@ -23,7 +23,6 @@
   display: block;
   margin: 0 auto;
 }
-
 /*currently need to add back 1 to size since removing it for visual grid, might be better to have 2 numbers*/
 .cellgrid {
   width: calc(var(--cell-size) * var(--board-size-dots));
