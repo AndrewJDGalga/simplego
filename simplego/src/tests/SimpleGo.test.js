@@ -37,6 +37,8 @@ describe("generate 9x9 board", ()=>{
         arr.push([]);
         for(let x = 0; x < 9; x++) {
             const stone = document.createElement("button");
+            stone.dataset.x = x;
+            stone.dataset.y = y;
             arr[y].push(stone);
             stone.id = `stone${x.toString() + y.toString()}`
             stone.addEventListener('click', ()=>{
@@ -45,7 +47,6 @@ describe("generate 9x9 board", ()=>{
             document.body.innerHTML = stone;
         }
     }
-
     test("generated 9x9 array", ()=>{
         let count = 0;
         for(let y = 0; y < arr.length; y++) {
@@ -57,3 +58,30 @@ describe("generate 9x9 board", ()=>{
     });
 });
 
+describe("test stone array operations", ()=>{
+    let currentPlayer = 0;
+    const arr = [];
+
+    for(let y = 0; y < 9; y++){
+        arr.push([]);
+        for(let x = 0; x < 9; x++) {
+            const stone = document.createElement("button");
+            stone.dataset.x = x;
+            stone.dataset.y = y;
+            arr[y].push(stone);
+            stone.id = `stone${x.toString() + y.toString()}`
+            stone.addEventListener('click', ()=>{
+                if(stone.classList.length === 0) stone.className = currentPlayer === 0 ? "black" : "white";
+            });
+            document.body.innerHTML = stone;
+        }
+    }
+    test("get stone", ()=>{
+        expect(arr[1][6].dataset.x).toBe("6");
+        expect(arr[3][2].dataset.y).toBe("3");
+    });
+    test.todo("get neighbor north.");
+    test.todo("get neighbor south.");
+    test.todo("get neighbor east.");
+    test.todo("get neighbor west.");
+});
