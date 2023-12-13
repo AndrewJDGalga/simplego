@@ -1,8 +1,6 @@
 import { useId, useState } from "react";
 import Cell from "./Cell";
 
-//import CellTest from "./CellTest";
-
 
 function GridBox() {
   return (
@@ -46,18 +44,6 @@ function CellGrid({boardSize, cellArray, cellArraySetter}) {
 }
 <CellGrid boardSize={9} cellArray={cellArray} cellArraySetter={setCellArray} />
 */
-
-/*
-function popBoard(srcArr) {
-  const tempArr = [];
-  for(let y = 0; y < srcArr.length; y++) {
-    for(let x = 0; x < srcArr[y].length; x++) {
-      const id = useId();
-      tempArr.push(<CellTest key={id} icon={srcArr[y][x]} />);
-    }
-  }
-  return tempArr;
-}*/
 
 function popBoard(srcArr) {
   const tempArr = [];
