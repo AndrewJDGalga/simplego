@@ -5,11 +5,13 @@
 !src/
 !css_dev/
 !css_prod/
+!components/
 !modules/
 !tests/
 !.gitignore
 !.LICENSE
 !.README.md
+!*.jsx
 !*.html
 !*.css
 !*.scss
