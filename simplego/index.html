@@ -6,7 +6,20 @@
     <title>Simple Go</title>
   </head>
   <body>
-    
-    
+    <form class="settings">
+      <legend>Board size:</legend>
+      <input id="board--nine" type="radio">
+      <label for="board--nine">9x9</label>
+      <input id="board--thirteen" type="radio">
+      <label for="board--thirteen">13x13</label>
+      <input id="board--nineteen" type="radio">
+      <label for="board--nineteen">19x19</label>
+      <input type="submit">
+    </form>
+    <main id="board"></main>
+    <footer class="interface">
+      <button>End Turn</button>
+      <button>Undo Placement</button>
+    </footer>
   </body>
 </html>
