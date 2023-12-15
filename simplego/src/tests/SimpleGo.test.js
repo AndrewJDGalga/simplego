@@ -261,13 +261,20 @@ describe("stone capturing", ()=>{
     };
     const checkAdjacent = ({multiArray, startX, startY, criteria}) =>{
         const validNeighbors = [];
-        for(let y = 0; y < multiArray.length; y++) {
-            for(let x = 0; x < multiArray[y].length; x++) {
-                if(multiArray[y][x].className = criteria) validNeighbors.push(multiArray[y][x]);
-            }
-        }
+
+        validNeighbors.push(getNeighbor({multiArray:multiArray, x:startX, y:startY, dir:"north"}));
+        validNeighbors.push(getNeighbor({multiArray:multiArray, x:startX, y:startY, dir:"south"}));
+        validNeighbors.push(getNeighbor({multiArray:multiArray, x:startX, y:startY, dir:"east"}));
+        validNeighbors.push(getNeighbor({multiArray:multiArray, x:startX, y:startY, dir:"west"}));
+
         return validNeighbors;
     };
+
+    test("all returned", ()=>{
+        const objs = checkAdjacent({multiArray:arr, startX:3,startY:3, criteria:""});
+        expect(objs.length).toBe(4);
+    });
+    test.todo("white stone adjacencies");
 
     test.todo("basic 4 dir 1 stone capture");
     test.todo("multistone capture");
