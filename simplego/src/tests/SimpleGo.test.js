@@ -242,6 +242,33 @@ describe("stone capturing", ()=>{
         return neighbor;
     };
 
+    const captureCheck = ({multiArray, startX, startY, curPlayer, oppositePlayer}) =>{
+        let captured = false;
+        const toVisit = multiArray[startY][startX];
+        const visited = [];
+
+        while(toVisit.length > 0) {
+            const next = toVisit.pop();
+
+        }
+    };
+
+    const checkAdjacentEnemy = ({multiArray, startX, startY, enemy}) =>{
+
+    };
+    const checkAdjacentFriend = ({multiArray, startX, startY, friend}) => {
+
+    };
+    const checkAdjacent = ({multiArray, startX, startY, criteria}) =>{
+        const validNeighbors = [];
+        for(let y = 0; y < multiArray.length; y++) {
+            for(let x = 0; x < multiArray[y].length; x++) {
+                if(multiArray[y][x].className = criteria) validNeighbors.push(multiArray[y][x]);
+            }
+        }
+        return validNeighbors;
+    };
+
     test.todo("basic 4 dir 1 stone capture");
     test.todo("multistone capture");
     test.todo("one liberty no capture");
