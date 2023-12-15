@@ -80,8 +80,36 @@ describe("test stone array operations", ()=>{
         expect(arr[1][6].dataset.x).toBe("6");
         expect(arr[3][2].dataset.y).toBe("3");
     });
-    test.todo("get neighbor north.");
-    test.todo("get neighbor south.");
-    test.todo("get neighbor east.");
-    test.todo("get neighbor west.");
+
+    const getNeighbor = ({x,y, multiArray, dir}) => {
+        let neighbor;
+
+        switch(dir){
+            case "north":
+                neighbor = (multiArray[y-1] && multiArray[y-1][x]) || null;
+                break;
+            case "south":
+                neighbor = multiArray[y+1][x] || null;
+                break;
+            case "east":
+                neighbor = multiArray[y][x-1] || null;
+                break;
+            case "west":
+                neighbor = multiArray[y][x+1] || null;
+                break;
+        }
+
+        return neighbor;
+    };
+
+    test("no north neighbor", ()=> {
+        expect(getNeighbor({x:0,y:0,multiArray:arr, dir:"north"})).toBe(null);
+    });
+    test("get one neighbor north.", ()=>{
+        expect(getNeighbor({x:0,y:1,multiArray:arr, dir:"north"})).not.toBe(null);
+    });
+    test.todo("all return neighbor north");
+    test.todo("get one neighbor south.");
+    test.todo("get one neighbor east.");
+    test.todo("get one neighbor west.");
 });
