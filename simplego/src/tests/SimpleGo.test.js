@@ -89,13 +89,13 @@ describe("test stone array operations", ()=>{
                 neighbor = (multiArray[y-1] && multiArray[y-1][x]) || null;
                 break;
             case "south":
-                neighbor = multiArray[y+1][x] || null;
+                neighbor = (multiArray[y+1] && multiArray[y+1][x]) || null;
                 break;
             case "east":
-                neighbor = multiArray[y][x-1] || null;
+                neighbor = (multiArray[y] && multiArray[y][x-1]) || null;
                 break;
             case "west":
-                neighbor = multiArray[y][x+1] || null;
+                neighbor = (multiArray[y] && multiArray[y][x+1]) || null;
                 break;
         }
 
@@ -105,6 +105,7 @@ describe("test stone array operations", ()=>{
     test("no north neighbor", ()=> {
         expect(getNeighbor({x:0,y:0,multiArray:arr, dir:"north"})).toBe(null);
     });
+
     test("all north no neighbor", ()=>{
         let neighbor = false;
         for(let i = 0; i < arr[0].length; i++) {
@@ -115,9 +116,11 @@ describe("test stone array operations", ()=>{
         }
         expect(neighbor).toBe(false);
     });
+
     test("get one neighbor north.", ()=>{
         expect(getNeighbor({x:0,y:1,multiArray:arr, dir:"north"})).not.toBe(null);
     });
+
     test("all return neighbor north", ()=>{
         let neighbor = true;
         for(let y = 1; y < arr.length; y++){
@@ -130,7 +133,28 @@ describe("test stone array operations", ()=>{
         }
         expect(neighbor).toBe(true);
     });
-    test.todo("get one neighbor south.");
+    test("no neighbor south", ()=>{
+        let neighbor = false;
+        for(let i = 0; i < arr[arr.length-1].length; i++) {
+            if(getNeighbor({x:i,y:arr.length-1,multiArray:arr, dir:"south"}) != null){
+                neighbor = true;
+                break;
+            }
+        }
+        expect(neighbor).toBe(false);
+    })
+    test("get neighbor south.", ()=>{
+        let neighbor = true;
+        for(let y = 0; y < arr.length-1; y++){
+            for(let x = 0; x < arr.length; x++) {
+                if(getNeighbor({x:x,y:y,multiArray:arr, dir:"south"}) === null){
+                    neighbor = false;
+                    break;
+                }
+            }
+        }
+        expect(neighbor).toBe(true);
+    });
     test.todo("get one neighbor east.");
     test.todo("get one neighbor west.");
 });
