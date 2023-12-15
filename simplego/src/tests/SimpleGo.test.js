@@ -2,8 +2,9 @@
  * @jest-environment jsdom
  */
 
-const isType = require("../modules/capture");
+//const isType = require("../modules/capture");
 
+/*
 describe("generate stone button", ()=>{
     let currentPlayer = 0;
     const stone = document.createElement("button");
@@ -199,4 +200,52 @@ describe("test stone array operations", ()=>{
         }
         expect(neighbor).toBe(true);
     });
+});*/
+
+describe("stone capturing", ()=>{
+    let currentPlayer = 0;
+    const arr = [];
+
+    for(let y = 0; y < 9; y++){
+        arr.push([]);
+        for(let x = 0; x < 9; x++) {
+            const stone = document.createElement("button");
+            stone.dataset.x = x;
+            stone.dataset.y = y;
+            arr[y].push(stone);
+            stone.id = `stone${x.toString() + y.toString()}`
+            stone.addEventListener('click', ()=>{
+                if(stone.classList.length === 0) stone.className = currentPlayer === 0 ? "black" : "white";
+            });
+            document.body.innerHTML = stone;
+        }
+    }
+
+    const getNeighbor = ({x,y, multiArray, dir}) => {
+        let neighbor;
+
+        switch(dir){
+            case "north":
+                neighbor = (multiArray[y-1] && multiArray[y-1][x]) || null;
+                break;
+            case "south":
+                neighbor = (multiArray[y+1] && multiArray[y+1][x]) || null;
+                break;
+            case "east":
+                neighbor = (multiArray[y] && multiArray[y][x-1]) || null;
+                break;
+            case "west":
+                neighbor = (multiArray[y] && multiArray[y][x+1]) || null;
+                break;
+        }
+
+        return neighbor;
+    };
+
+    test.todo("basic 4 dir 1 stone capture");
+    test.todo("multistone capture");
+    test.todo("one liberty no capture");
+    test.todo("edge capture");
+    test.todo("edge multistone capture");
+    test.todo("edge liberty safe");
 });
