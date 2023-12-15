@@ -105,10 +105,31 @@ describe("test stone array operations", ()=>{
     test("no north neighbor", ()=> {
         expect(getNeighbor({x:0,y:0,multiArray:arr, dir:"north"})).toBe(null);
     });
+    test("all north no neighbor", ()=>{
+        let neighbor = false;
+        for(let i = 0; i < arr[0].length; i++) {
+            if(getNeighbor({x:i,y:0,multiArray:arr, dir:"north"}) != null){
+                neighbor = true;
+                break;
+            }
+        }
+        expect(neighbor).toBe(false);
+    });
     test("get one neighbor north.", ()=>{
         expect(getNeighbor({x:0,y:1,multiArray:arr, dir:"north"})).not.toBe(null);
     });
-    test.todo("all return neighbor north");
+    test("all return neighbor north", ()=>{
+        let neighbor = true;
+        for(let y = 1; y < arr.length; y++){
+            for(let x = 0; x < arr.length; x++) {
+                if(getNeighbor({x:x,y:y,multiArray:arr, dir:"north"}) === null){
+                    neighbor = false;
+                    break;
+                }
+            }
+        }
+        expect(neighbor).toBe(true);
+    });
     test.todo("get one neighbor south.");
     test.todo("get one neighbor east.");
     test.todo("get one neighbor west.");
