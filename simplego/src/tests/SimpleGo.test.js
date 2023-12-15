@@ -155,6 +155,28 @@ describe("test stone array operations", ()=>{
         }
         expect(neighbor).toBe(true);
     });
-    test.todo("get one neighbor east.");
-    test.todo("get one neighbor west.");
+    test("no neighbor east.", ()=>{
+        let neighbor = false;
+        for(let i = 0; i < arr.length; i++) {
+            if(getNeighbor({x:0,y:i,multiArray:arr, dir:"east"}) != null){
+                neighbor = true;
+                break;
+            }
+        }
+        expect(neighbor).toBe(false);
+    });
+    test("get neighbors east", ()=>{
+        let neighbor = true;
+        for(let y = 0; y < arr.length; y++){
+            for(let x = 1; x < arr.length; x++) {
+                if(getNeighbor({x:x,y:y,multiArray:arr, dir:"east"}) === null){
+                    neighbor = false;
+                    break;
+                }
+            }
+        }
+        expect(neighbor).toBe(true);
+    });
+    test.todo("no neighbors west.");
+    test.todo("get neighbors west.");
 });
