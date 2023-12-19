@@ -270,12 +270,38 @@ describe("stone capturing", ()=>{
         return validNeighbors;
     };
 
-    test("all returned", ()=>{
+    test("4 returned", ()=>{
         const objs = checkAdjacent({multiArray:arr, startX:3,startY:3, criteria:""});
         expect(objs.length).toBe(4);
     });
-    test.todo("white stone adjacencies");
+    test("2 valid returned", ()=>{
+        const objs = checkAdjacent({multiArray:arr, startX:0,startY:0, criteria:""});
+        let count = 0;
+        for(let i = 0; i < objs.length; i++){
+            if(objs[i] !== null) count++;
+        }
+        expect(count).toBe(2);
+    });
 
+    arr[0][3].click();
+    arr[1][3].click();
+    arr[2][3].click();
+    arr[1][4].click();
+    arr[1][2].click();
+    
+    test("different stones present", ()=>{
+        let count = 0;
+        for(let y = 0; y < arr.length; y++) {
+            for(let x = 0; x < arr.length; x++) {
+                if(arr[y][x].className !== "") count++;
+            }
+        }
+        expect(count).toBe(5);
+    })
+
+    test.todo("black stone adjacencies");
+
+    test.todo("white stone adjacencies");
     test.todo("basic 4 dir 1 stone capture");
     test.todo("multistone capture");
     test.todo("one liberty no capture");
