@@ -281,11 +281,15 @@ describe("stone capturing", ()=>{
     });
     
     test("black stone adjacencies all", ()=>{
-        arr[1][1].click();
+        arr[0][0].click();
         arr[0][1].click();
+        arr[0][2].click();
         arr[1][0].click();
+        arr[1][1].click();
         arr[1][2].click();
+        arr[2][0].click();
         arr[2][1].click();
+        arr[2][2].click();
 
         const objs = checkAdjacent({multiArray:arr, startX:1,startY:1, criteria:"black"});
         let count = 0;
@@ -295,30 +299,6 @@ describe("stone capturing", ()=>{
         expect(count).toBe(4);
     });
 
-    /*
-    test("array contents not null", ()=>{
-        for(let y = 0; y < arr.length; y++){
-            for(let x = 0; x < arr[y].length; x++){
-                expect(arr[y][x]).not.toBe(null);
-            }
-        }
-    })*/
-    
-    test("neighbor black stone search returns expected north", ()=>{
-        /*
-        arr[1][1].click();
-        arr[0][1].click();
-        arr[1][0].click();
-        arr[1][2].click();
-        arr[2][1].click();*/
-
-        const start = {x:1, y:2};
-        const north = (arr[2] && arr[2][1] || null); //getNeighbor({startX:1, startY:2, arr, dir:"north"});
-        expect(north).not.toBe(null);
-        expect(north.className).toBe("black");
-    })
-
-    /*
     test("black stone adjacencies 3", ()=>{
         const objs = checkAdjacent({multiArray:arr, startX:1,startY:2, criteria:"black"});
         let count = 0;
@@ -327,7 +307,7 @@ describe("stone capturing", ()=>{
         }
         expect(count).toBe(3);
     });
-*/
+
     test.todo("white stone adjacencies");
     test.todo("basic 4 dir 1 stone capture");
     test.todo("multistone capture");
