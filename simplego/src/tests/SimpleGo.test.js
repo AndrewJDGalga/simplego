@@ -223,7 +223,6 @@ describe("stone capturing", ()=>{
 
     const getNeighbor = ({x,y, multiArray, dir}) => {
         let neighbor;
-
         switch(dir){
             case "north":
                 neighbor = (multiArray[y-1] && multiArray[y-1][x]) || null;
@@ -238,7 +237,6 @@ describe("stone capturing", ()=>{
                 neighbor = (multiArray[y] && multiArray[y][x+1]) || null;
                 break;
         }
-
         return neighbor;
     };
 
@@ -256,10 +254,15 @@ describe("stone capturing", ()=>{
     const checkAdjacent = ({multiArray, startX, startY, criteria}) =>{
         const validNeighbors = [];
 
-        validNeighbors.push(getNeighbor({multiArray:multiArray, x:startX, y:startY, dir:"north"}));
-        validNeighbors.push(getNeighbor({multiArray:multiArray, x:startX, y:startY, dir:"south"}));
-        validNeighbors.push(getNeighbor({multiArray:multiArray, x:startX, y:startY, dir:"east"}));
-        validNeighbors.push(getNeighbor({multiArray:multiArray, x:startX, y:startY, dir:"west"}));
+        //need to test returned object!
+        const northNeighbor = getNeighbor({multiArray:multiArray, x:startX, y:startY, dir:"north"});
+        if(northNeighbor && northNeighbor.className === criteria) validNeighbors.push(northNeighbor);
+        const southNeighbor = getNeighbor({multiArray:multiArray, x:startX, y:startY, dir:"south"})
+        if(southNeighbor && southNeighbor.className === criteria) validNeighbors.push(southNeighbor);
+        const eastNeighbor = getNeighbor({multiArray:multiArray, x:startX, y:startY, dir:"east"}); 
+        if(eastNeighbor && eastNeighbor.className === criteria) validNeighbors.push(eastNeighbor);
+        const westNeighbor = getNeighbor({multiArray:multiArray, x:startX, y:startY, dir:"west"}); 
+        if(westNeighbor && westNeighbor.className === criteria) validNeighbors.push(westNeighbor);
 
         return validNeighbors;
     };
@@ -276,23 +279,55 @@ describe("stone capturing", ()=>{
         }
         expect(count).toBe(2);
     });
+    
+    test("black stone adjacencies all", ()=>{
+        arr[1][1].click();
+        arr[0][1].click();
+        arr[1][0].click();
+        arr[1][2].click();
+        arr[2][1].click();
 
-    arr[1][1].click();
-    arr[0][1].click();
-    arr[1][0].click();
-    arr[1][2].click();
-    arr[2][1].click();
-
-    test("black stone adjacencies", ()=>{
         const objs = checkAdjacent({multiArray:arr, startX:1,startY:1, criteria:"black"});
         let count = 0;
         for(let i = 0; i < objs.length; i++){
             if(objs[i] !== null) count++;
         }
         expect(count).toBe(4);
-        console.table(objs);
     });
 
+    /*
+    test("array contents not null", ()=>{
+        for(let y = 0; y < arr.length; y++){
+            for(let x = 0; x < arr[y].length; x++){
+                expect(arr[y][x]).not.toBe(null);
+            }
+        }
+    })*/
+    
+    test("neighbor black stone search returns expected north", ()=>{
+        /*
+        arr[1][1].click();
+        arr[0][1].click();
+        arr[1][0].click();
+        arr[1][2].click();
+        arr[2][1].click();*/
+
+        const start = {x:1, y:2};
+        const north = (arr[2] && arr[2][1] || null); //getNeighbor({startX:1, startY:2, arr, dir:"north"});
+        expect(north).not.toBe(null);
+        expect(north.className).toBe("black");
+    })
+
+    /*
+    test("black stone adjacencies 3", ()=>{
+        const objs = checkAdjacent({multiArray:arr, startX:1,startY:2, criteria:"black"});
+        let count = 0;
+        for(let i = 0; i < objs.length; i++){
+            if(objs[i] !== null) count++;
+        }
+        expect(count).toBe(3);
+    });
+*/
     test.todo("white stone adjacencies");
     test.todo("basic 4 dir 1 stone capture");
     test.todo("multistone capture");
