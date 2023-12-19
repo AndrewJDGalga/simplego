@@ -253,12 +253,6 @@ describe("stone capturing", ()=>{
         }
     };
 
-    const checkAdjacentEnemy = ({multiArray, startX, startY, enemy}) =>{
-
-    };
-    const checkAdjacentFriend = ({multiArray, startX, startY, friend}) => {
-
-    };
     const checkAdjacent = ({multiArray, startX, startY, criteria}) =>{
         const validNeighbors = [];
 
@@ -283,23 +277,21 @@ describe("stone capturing", ()=>{
         expect(count).toBe(2);
     });
 
-    arr[0][3].click();
-    arr[1][3].click();
-    arr[2][3].click();
-    arr[1][4].click();
+    arr[1][1].click();
+    arr[0][1].click();
+    arr[1][0].click();
     arr[1][2].click();
-    
-    test("different stones present", ()=>{
-        let count = 0;
-        for(let y = 0; y < arr.length; y++) {
-            for(let x = 0; x < arr.length; x++) {
-                if(arr[y][x].className !== "") count++;
-            }
-        }
-        expect(count).toBe(5);
-    })
+    arr[2][1].click();
 
-    test.todo("black stone adjacencies");
+    test("black stone adjacencies", ()=>{
+        const objs = checkAdjacent({multiArray:arr, startX:1,startY:1, criteria:"black"});
+        let count = 0;
+        for(let i = 0; i < objs.length; i++){
+            if(objs[i] !== null) count++;
+        }
+        expect(count).toBe(4);
+        console.table(objs);
+    });
 
     test.todo("white stone adjacencies");
     test.todo("basic 4 dir 1 stone capture");
